@@ -1,0 +1,17 @@
+{
+  "name": "Pika Search",
+  "version": "1.0",
+  "description": "Search privately with Pika.",
+  "manifest_version": 3,
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "pika",
+      "keyword": "pika",
+      "search_url": "https://askpika.com/search?q={searchTerms}",
+      "favicon_url": "https://icon.horse/icon/startpage.com",
+      "suggest_url": "https://askpika.com/services/suggestions?q={searchTerms}",
+      "encoding": "UTF-8",
+      "is_default": true
+    }
+  }
+}
