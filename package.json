@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "web-ext": "^7.3.1"
+  },
+  "scripts": {
+    "build": "mkdir -p dist && cp src/manifest.json dist/",
+    "start:firefox": "npm run build && web-ext run --source-dir='./dist'",
+    "start:chrome": "npm run build && web-ext run --source-dir='./dist' --target chromium"
+  }
+}

@@ -9,7 +9,7 @@
       "keyword": "pika",
       "search_url": "https://askpika.com/search?q={searchTerms}",
       "favicon_url": "https://icon.horse/icon/startpage.com",
-      "suggest_url": "https://askpika.com/services/suggestions?q={searchTerms}",
+      "suggest_url": "https://askpika.com/services/suggestions?q={searchTerms}&format=chrome",
       "encoding": "UTF-8",
       "is_default": true
     }
