@@ -5,13 +5,24 @@
   "manifest_version": 3,
   "chrome_settings_overrides": {
     "search_provider": {
-      "name": "pika",
-      "keyword": "pika",
+      "name": "Mavii",
+      "keyword": "mavii",
       "search_url": "https://mavii.com/search?q={searchTerms}",
       "favicon_url": "https://mavii.com/favicon.ico",
       "suggest_url": "https://mavii.com/api/suggestions?q={searchTerms}&format=chrome",
       "encoding": "UTF-8",
       "is_default": true
     }
-  }
+  },
+  "chrome_url_overrides": {
+    "newtab": "./newtab/index.html"
+  },
+  "permissions": ["topSites", "favicon"],
+  "web_accessible_resources": [
+    {
+      "resources": ["_favicon/*"],
+      "matches": ["<all_urls>"],
+      "extension_ids": ["*"]
+    }
+  ]
 }
