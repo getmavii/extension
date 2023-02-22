@@ -30,12 +30,12 @@ function getShortTitle(title) {
   shortTitle = shortTitle.trim();
   shortTitle = truncate(shortTitle, {
     length: 14,
-    separator: /[\s,\.]/,
+    separator: /[\s,\.—\/]/,
     omission: "",
   });
 
   // Trim punctuation from the end of the title
-  shortTitle = shortTitle.replace(/[\s,\.]+$/, "");
+  shortTitle = shortTitle.replace(/[\s,\.—\/]+$/, "");
 
   return shortTitle;
 }
