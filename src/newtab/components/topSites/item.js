@@ -1,26 +1,40 @@
 export default function TopSitesList({ site }) {
   return (
-    <a href={site.url} className="topSitesItem">
+    <a href={site.url} className="topSitesItem" title={site.title}>
       <div className="favicon">
-        <img src={getFaviconUrl(site.url)} width="36" height="36" />
+        <img src={getFaviconUrl(site.url)} width="48" height="48" />
       </div>
 
-      <div className="title">{getHostName(site.url)}</div>
+      <div className="title">{getShortTitle(site.title)}</div>
     </a>
   );
 }
 
 function getFaviconUrl(url) {
-  const faviconUrl = new URL(chrome.runtime.getURL("/_favicon/"));
+  const faviconUrl = new URL("https://icons2.mavii.com/");
+  const { origin } = new URL(url);
 
-  faviconUrl.searchParams.set("pageUrl", url);
-  faviconUrl.searchParams.set("size", "36");
+  faviconUrl.searchParams.set("url", origin);
+  faviconUrl.searchParams.set("size", "96");
 
   return faviconUrl.toString();
 }
 
-function getHostName(url) {
-  const hostName = new URL(url).hostname;
+function getShortTitle(title) {
+  // Split by common delimiters and return shorter segment
+  const segments = title.split(/[·|]/);
+  const shortestSegment = segments.reduce((shortest, segment) => {
+    return segment.length < shortest.length ? segment : shortest;
+  });
 
-  return hostName.replace("www.", "");
+  return shortestSegment.trim();
+}
+
+function getHostname(url) {
+  let { hostname } = new URL(url);
+
+  hostname = hostname.replace("www.", "");
+  hostname = hostname.split(".").slice(0, -1).join(".");
+
+  return hostname;
 }
