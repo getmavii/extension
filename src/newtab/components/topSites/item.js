@@ -1,3 +1,5 @@
+import { truncate } from "lodash-es";
+
 export default function TopSitesList({ site }) {
   return (
     <a href={site.url} className="topSitesItem" title={site.title}>
@@ -10,24 +12,32 @@ export default function TopSitesList({ site }) {
   );
 }
 
-function getFaviconUrl(url) {
+function getFaviconUrl(url, size = 96) {
   const faviconUrl = new URL("https://icons2.mavii.com/");
   const { origin } = new URL(url);
 
   faviconUrl.searchParams.set("url", origin);
-  faviconUrl.searchParams.set("size", "96");
+  faviconUrl.searchParams.set("size", size);
 
   return faviconUrl.toString();
 }
 
 function getShortTitle(title) {
-  // Split by common delimiters and return shorter segment
-  const segments = title.split(/[·|]/);
-  const shortestSegment = segments.reduce((shortest, segment) => {
+  let shortTitle = title.split(/[·|]/).reduce((shortest, segment) => {
     return segment.length < shortest.length ? segment : shortest;
   });
 
-  return shortestSegment.trim();
+  shortTitle = shortTitle.trim();
+  shortTitle = truncate(shortTitle, {
+    length: 14,
+    separator: /[\s,\.]/,
+    omission: "",
+  });
+
+  // Trim punctuation from the end of the title
+  shortTitle = shortTitle.replace(/[\s,\.]+$/, "");
+
+  return shortTitle;
 }
 
 function getHostname(url) {
