@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import TopSitesItem from "./item";
+import TopSitesItem from "./topSitesItem";
+import "./topSites.scss";
 
 export default function TopSitesList({ topSites }) {
   const [sites, setSites] = useState(null);
