@@ -1,7 +1,8 @@
 .topSitesList {
   color: #1c1e29;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 21px;
   height: 128px;
 
   .topSitesItem {
