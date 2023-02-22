@@ -1,7 +1,7 @@
 {
   "name": "Mavii Search",
   "version": "1.0",
-  "description": "Find the best stuff with Mavii.",
+  "description": "Mavii gives you a satisfying answer to any question.",
   "manifest_version": 3,
   "chrome_settings_overrides": {
     "search_provider": {
@@ -9,7 +9,7 @@
       "keyword": "mavii",
       "search_url": "https://mavii.com/search?q={searchTerms}",
       "favicon_url": "https://mavii.com/favicon.ico",
-      "suggest_url": "https://mavii.com/api/suggestions?q={searchTerms}&format=chrome",
+      "suggest_url": "https://mavii.com/api/suggestions?q={searchTerms}",
       "encoding": "UTF-8",
       "is_default": true
     }

@@ -8,8 +8,10 @@
   "scripts": {
     "dev": "parcel watch src/manifest.json --host localhost",
     "build": "parcel build src/manifest.json",
-    "start:firefox": "npm run build && web-ext run --source-dir='./dist'",
-    "start:chrome": "npm run build && web-ext run --source-dir='./dist' --target chromium"
+    "clean": "rm -rf dist .parcel-cache",
+    "package": "./bin/package_chrome && ./bin/package_firefox",
+    "package:chrome": "./bin/package_firefox",
+    "package:firefox": "./bin/package_firefox"
   },
   "devDependencies": {
     "@parcel/config-webextension": "^2.8.3",

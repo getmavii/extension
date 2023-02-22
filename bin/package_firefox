@@ -1,0 +1,8 @@
+#!/bin/bash
+npm run clean
+npm run build
+# Firefox requires the manifest version to be 2, not 3.
+sed -i '' 's/"manifest_version":3/"manifest_version":2/' dist/manifest.json
+npx web-ext build --source-dir dist --artifacts-dir packages/firefox --overwrite-dest
+# Restore the manifest version to 3.
+sed -i '' 's/"manifest_version":2/"manifest_version":3/' dist/manifest.json
