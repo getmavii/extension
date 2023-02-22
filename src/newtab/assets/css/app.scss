@@ -2,7 +2,7 @@
 @import "fonts.scss";
 
 html {
-  background-color: #f9f9fb;
+  background-color: #fbfbfc;
   box-sizing: border-box;
 }
 
@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  font-family: "CircularXXWeb-Book", ui-sans-serif, system-ui, -apple-system,
+  font-family: "CircularXXWeb-Regular", ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont;
   font-size: 16px;
 }
@@ -27,38 +27,32 @@ body {
   width: 100vw;
 
   .content {
-    width: 800px;
-    padding-bottom: 40px;
+    width: 680px;
   }
 }
 
-h1,
-.searchBox {
-  margin-bottom: 50px;
-}
-
-h1 {
-  color: #222;
-  font-family: "CircularXXWeb-Bold";
-  font-size: 55px;
-  letter-spacing: -0.02em;
-  text-align: center;
-  text-transform: lowercase;
+.logo {
+  display: block;
+  margin: 0 auto 42px auto;
 }
 
 .searchBox {
   position: relative;
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  margin: 0 auto 48px auto;
+  width: 100%;
 
   input {
-    border: 2px solid #e6e8eb;
-    border-radius: 10px;
+    border: 2px solid #e5e8eb;
+    border-radius: 8px;
     font-family: inherit;
-    font-size: 16px;
-    padding: 14px;
+    font-size: 20px;
+    padding: 16px;
     width: 100%;
+
+    &::placeholder {
+      color: #6f7a86;
+    }
 
     &:focus {
       outline: 0;
@@ -103,26 +97,31 @@ h1 {
 }
 
 .topSitesList {
+  color: #1c1e29;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  height: 128px;
 
   .topSitesItem {
     color: inherit;
     display: inline-block;
-    width: 120px;
-
     text-align: center;
     text-decoration: none;
-    padding: 0 8px;
+
+    &:hover {
+      .favicon {
+        border: 2px solid #bfc8d0;
+      }
+    }
 
     .favicon {
-      border: 2px solid #e6e8eb;
+      border: 1px solid #e5e8eb;
       background: #fff;
       border-radius: 10px;
-      height: 88px;
+      height: 96px;
       margin: 0 auto;
       position: relative;
-      width: 88px;
+      width: 96px;
 
       img {
         border-radius: 4px;
@@ -134,8 +133,8 @@ h1 {
     }
 
     .title {
-      font-size: 13px;
-      line-height: 1.4;
+      font-size: 15px;
+      line-height: 145%;
       margin-top: 8px;
       overflow: hidden;
       white-space: nowrap;

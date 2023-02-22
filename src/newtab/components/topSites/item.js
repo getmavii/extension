@@ -4,7 +4,7 @@ export default function TopSitesList({ site }) {
   return (
     <a href={site.url} className="topSitesItem" title={site.title}>
       <div className="favicon">
-        <img src={getFaviconUrl(site.url)} width="48" height="48" />
+        <img src={getFaviconUrl(site.url, 80)} width="40" height="40" />
       </div>
 
       <div className="title">{getShortTitle(site.title)}</div>
