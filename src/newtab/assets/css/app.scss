@@ -1,4 +1,5 @@
 @import "reset.css";
+@import "fonts.scss";
 
 html {
   background-color: #f9f9fb;
@@ -12,9 +13,8 @@ html {
 }
 
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "CircularXXWeb-Book", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont;
   font-size: 16px;
 }
 
@@ -39,8 +39,8 @@ h1,
 
 h1 {
   color: #222;
+  font-family: "CircularXXWeb-Bold";
   font-size: 55px;
-  font-weight: 600;
   letter-spacing: -0.02em;
   text-align: center;
   text-transform: lowercase;
