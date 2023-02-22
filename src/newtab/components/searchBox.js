@@ -13,38 +13,86 @@ class SearchBox extends React.Component {
 
     this.inputRef = React.createRef();
 
-    // Bind this
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-
     this.state = {
-      query: null,
+      query: "",
+      userInput: null,
       suggestions: [],
       selectedSuggestionIndex: -1,
-      showSuggestions: false,
+      isFocused: false,
     };
   }
 
-  componentDidMount() {
-    // The autofocus attribute doesn't work reliably therefore this...
-    if (this.props.autoFocus) {
-      this.inputRef.current.focus();
+  async handleInput(e) {
+    const q = e.target.value;
+
+    this.setState({
+      query: q,
+      userInput: q,
+      selectedSuggestionIndex: -1,
+      isFocused: true,
+    });
+
+    if (q.length) {
+      const response = await (
+        await fetch(
+          `https://dev.mavii.com/api/suggestions?q=${encodeURIComponent(q)}`
+        )
+      ).json();
+
+      // Don't update the suggestions unless it still matches the input
+      if (e.target.value == response[0]) {
+        this.setState({ suggestions: response[1] });
+      }
+    }
+    // If the query is empty but we still have suggestions, reset them.
+    else if (this.state.suggestions.length) {
+      this.setState({ suggestions: [] });
     }
   }
 
-  revertToUserInput() {
-    this.setState({ query: this.state.userInput, selectedSuggestionIndex: -1 });
-  }
+  handleKeyDown(e) {
+    const { query, suggestions, selectedSuggestionIndex } = this.state;
 
-  reset() {
-    this.setState({
-      suggestions: [],
-      selectedSuggestionIndex: -1,
-      showSuggestions: false,
-      query: null,
-    });
+    if (query.length) {
+      if (e.keyCode == KEY_CODES.UP) {
+        // Don't move cursor to the beginning of the text
+        e.preventDefault();
+
+        // Wrap around to the end
+        if (selectedSuggestionIndex == -1) {
+          this.selectSuggestion(suggestions.length - 1);
+        }
+        // Select the input box
+        else if (selectedSuggestionIndex == 0) {
+          this.revertToUserInput();
+        } else {
+          this.selectSuggestion(selectedSuggestionIndex - 1);
+        }
+      }
+      // Down arrow: increment the index
+      else if (e.keyCode == KEY_CODES.DOWN) {
+        // Don't move cursor to the end of the text
+        e.preventDefault();
+
+        // Select in the input box
+        if (selectedSuggestionIndex == suggestions.length - 1) {
+          this.revertToUserInput();
+        } else {
+          this.selectSuggestion(selectedSuggestionIndex + 1);
+        }
+      }
+      // Esc: reset values
+      else if (e.keyCode == KEY_CODES.ESC) {
+        // Revert if there's a selected index
+        if (selectedSuggestionIndex != -1) {
+          this.revertToUserInput();
+        }
+        // Clear suggestions if esc is pressed while search box is selected
+        else {
+          this.clearSuggestions();
+        }
+      }
+    }
   }
 
   selectSuggestion(index) {
@@ -54,94 +102,37 @@ class SearchBox extends React.Component {
     });
   }
 
-  async handleChange(e) {
-    const query = e.target.value;
-    const userInput = query;
+  revertToUserInput() {
+    this.setState({
+      query: this.state.userInput,
+      selectedSuggestionIndex: -1,
+    });
+  }
 
-    // Start showing suggestions if they've been turned off
-    this.setState({ showSuggestions: true });
+  clearSuggestions(e) {
+    this.setState({ suggestions: [] });
+  }
 
-    // Update query immediately
-    this.setState({ query: query, userInput: userInput });
+  handleBlur() {
+    this.setState({ isFocused: false });
+  }
 
-    // Only fetch suggestions when there's a query
-    if (query.length) {
-      const response = await fetch(
-        `https://dev.mavii.com/api/suggestions?q=${query}`
-      );
-      const data = await response.json();
+  handleFocus() {
+    this.setState({ isFocused: true });
+  }
 
-      // Only update the suggestions if the query still matches
-      if (this.state.showSuggestions && this.state.query === data[0]) {
-        // Update suggestions
-        this.setState({ suggestions: data[1] });
-      }
+  getFormClasses() {
+    const formClasses = ["searchBox"];
+
+    if (this.state.suggestions.length) {
+      formClasses.push("hasSuggestions");
     }
-    // Reset suggestions if there's no query
-    else {
-      this.setState({ suggestions: [] });
+
+    if (this.state.isFocused) {
+      formClasses.push("isFocused");
     }
-  }
 
-  handleKeyDown(e) {
-    let { suggestions, selectedSuggestionIndex, query } = this.state;
-
-    if (query?.length) {
-      // Up arrow: decrement the index
-      if (e.keyCode === KEY_CODES.UP) {
-        // Don't move cursor to the beginning of the text
-        e.preventDefault();
-
-        // Wrap around to the end
-        if (selectedSuggestionIndex === -1) {
-          this.selectSuggestion(suggestions.length - 1);
-        }
-        // Select the input box
-        else if (selectedSuggestionIndex === 0) {
-          this.revertToUserInput();
-        } else {
-          this.selectSuggestion(selectedSuggestionIndex - 1);
-        }
-      }
-      // Down arrow: increment the index
-      else if (e.keyCode === KEY_CODES.DOWN) {
-        // Don't move cursor to the end of the text
-        e.preventDefault();
-
-        // Select in the input box
-        if (selectedSuggestionIndex === suggestions.length - 1) {
-          this.revertToUserInput();
-        } else {
-          this.selectSuggestion(selectedSuggestionIndex + 1);
-        }
-      }
-      // Esc: reset values
-      else if (e.keyCode === KEY_CODES.ESC) {
-        this.revertToUserInput();
-      }
-    }
-  }
-
-  handleClick(e) {
-    const query = e.currentTarget.innerText;
-
-    this.setState({ query: query, userInput: query });
-
-    this.pushRoute(query);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-
-    this.inputRef.current.blur();
-
-    this.pushRoute(this.state.query || this.props.query);
-  }
-
-  pushRoute(q) {
-    this.reset();
-
-    window.location = "https://mavii.com/search?q=" + encodeURIComponent(q);
+    return formClasses.join(" ");
   }
 
   render() {
@@ -177,12 +168,20 @@ class SearchBox extends React.Component {
     }
 
     return (
-      <form className="searchBox" onSubmit={this.handleSubmit}>
+      <form
+        className={this.getFormClasses()}
+        action="https://dev.mavii.com/search"
+        method="get"
+        onSubmit={this.clearSuggestions.bind(this)}
+      >
         <input
           ref={this.inputRef}
+          name="q"
           placeholder={this.props.placeholder}
-          onChange={this.handleChange}
-          onKeyDown={this.handleKeyDown}
+          onInput={this.handleInput.bind(this)}
+          onKeyDown={this.handleKeyDown.bind(this)}
+          onFocus={this.handleFocus.bind(this)}
+          onBlur={this.handleBlur.bind(this)}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
