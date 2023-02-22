@@ -2,67 +2,79 @@
   min-height: 60px;
   margin: 0 auto 48px auto;
   position: relative;
-}
 
-.searchBox {
-  border: 2px solid #e5e8eb;
-  border-radius: 8px;
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  z-index: 100;
-
-  &:hover,
-  &.isFocused {
-    outline: 2px solid #e5e8eb;
-  }
-
-  input {
-    border: 0;
-    outline: none;
-    font-family: inherit;
-    font-size: 20px;
-    padding: 16px;
-    width: 100%;
-
-    &::placeholder {
-      color: #6f7a86;
-    }
-  }
-
-  button {
-    background: none;
-    border: 0;
-    opacity: 0;
+  .searchBox {
+    border: 2px solid #e5e8eb;
+    border-radius: 8px;
+    overflow: hidden;
     position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    svg {
-      fill: #888;
-    }
-  }
-
-  .suggestions {
-    background: #fff;
-    margin-top: -1px;
-    padding-bottom: 8px;
     width: 100%;
+    z-index: 100;
 
-    li {
-      &.selected {
-        background: #eee;
+    &:hover,
+    &.isFocused {
+      outline: 2px solid #e5e8eb;
+    }
+
+    > .searchIcon {
+      left: 20px;
+      position: absolute;
+      top: 18px;
+    }
+
+    input {
+      border: 0;
+      outline: none;
+      font-family: inherit;
+      font-size: 20px;
+      padding: 16px 16px 16px 58px;
+      width: 100%;
+
+      &::placeholder {
+        color: #6f7a86;
       }
+    }
 
-      a {
-        color: inherit;
-        display: block;
-        padding: 12px 16px;
-        text-decoration: none;
+    button {
+      background: none;
+      border: 0;
+      opacity: 0;
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
 
-        &:hover {
-          background: #f8f8f8;
+      svg {
+        fill: #888;
+      }
+    }
+
+    .suggestions {
+      background: #fff;
+      margin-top: -1px;
+      padding-bottom: 8px;
+      width: 100%;
+
+      li {
+        &.selected {
+          background: #eee;
+        }
+
+        a {
+          color: inherit;
+          display: block;
+          padding: 12px 12px 12px 58px;
+          position: relative;
+          text-decoration: none;
+
+          &:hover {
+            background: #f8f8f8;
+          }
+
+          .searchIcon {
+            left: 21px;
+            position: absolute;
+          }
         }
       }
     }
