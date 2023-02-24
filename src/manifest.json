@@ -1,7 +1,7 @@
 {
   "name": "Mavii Search",
   "version": "1.0",
-  "description": "Mavii gives you a satisfying answer to any question.",
+  "description": "Ask any question. Get a satisfying answer.",
   "manifest_version": 3,
   "icons": {
     "16": "./newtab/assets/images/favicons/favicon16.png",
@@ -11,7 +11,7 @@
   },
   "chrome_settings_overrides": {
     "search_provider": {
-      "name": "Mavii",
+      "name": "Mavii Search",
       "keyword": "mavii",
       "search_url": "https://mavii.com/search?q={searchTerms}",
       "favicon_url": "https://mavii.com/favicon.ico",

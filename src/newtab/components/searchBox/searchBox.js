@@ -36,7 +36,7 @@ class SearchBox extends React.Component {
     if (q.length) {
       const response = await (
         await fetch(
-          `https://dev.mavii.com/api/suggestions?q=${encodeURIComponent(q)}`
+          `https://mavii.com/api/suggestions?q=${encodeURIComponent(q)}`
         )
       ).json();
 
@@ -159,7 +159,7 @@ class SearchBox extends React.Component {
               className = "selected";
             }
 
-            const href = `http://dev.mavii.com/search?q=${encodeURIComponent(
+            const href = `http://mavii.com/search?q=${encodeURIComponent(
               suggestion
             )}`;
 
@@ -180,7 +180,7 @@ class SearchBox extends React.Component {
       <div className="searchBoxContainer">
         <form
           className={this.getFormClasses()}
-          action="https://dev.mavii.com/search"
+          action="https://mavii.com/search"
           method="get"
           onSubmit={this.clearSuggestions.bind(this)}
         >
