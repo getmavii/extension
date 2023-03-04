@@ -4,7 +4,7 @@
   position: relative;
 
   .searchBox {
-    border: 2px solid #e5e8eb;
+    border: var(--border-width-sm) solid var(--color-other-stroke);
     border-radius: 8px;
     overflow: hidden;
     position: absolute;
@@ -13,7 +13,7 @@
 
     &:hover,
     &.isFocused {
-      outline: 2px solid #e5e8eb;
+      outline: var(--border-width-sm) solid var(--color-other-stroke);
     }
 
     > .searchIcon {
@@ -23,7 +23,9 @@
     }
 
     input {
+      background: var(--color-other-background-white);
       border: 0;
+      color: inherit;
       outline: none;
       font-family: inherit;
       font-size: 20px;
@@ -31,7 +33,7 @@
       width: 100%;
 
       &::placeholder {
-        color: #6f7a86;
+        color: var(--color-other-icon);
       }
     }
 
@@ -45,19 +47,19 @@
       transform: translateY(-50%);
 
       svg {
-        fill: #888;
+        fill: var(--color-other-icon);
       }
     }
 
     .suggestions {
-      background: #fff;
+      background: var(--color-other-background-white);
       margin-top: -1px;
       padding-bottom: 8px;
       width: 100%;
 
       li {
         &.selected {
-          background: #eee;
+          background: var(--color-other-background);
         }
 
         a {
@@ -68,7 +70,7 @@
           text-decoration: none;
 
           &:hover {
-            background: #f8f8f8;
+            background: var(--color-other-background);
           }
 
           .searchIcon {

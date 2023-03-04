@@ -1,8 +1,9 @@
-@import "reset.css";
-@import "fonts.scss";
+@import "reset";
+@import "fonts";
+@import "theme";
 
 html {
-  background-color: #fbfbfc;
+  background-color: var(--color-other-background);
   box-sizing: border-box;
 }
 
@@ -13,10 +14,10 @@ html {
 }
 
 body {
-  color: #1c1e29;
+  color: var(--color-text-content);
   font-family: "CircularXXWeb-Regular", ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont;
-  font-size: 16px;
+  font-size: var(--font-body-2);
 }
 
 #app {

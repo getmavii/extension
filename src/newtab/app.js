@@ -7,7 +7,7 @@ export function App() {
 
   return (
     <div className="content">
-      <img src={logoUrl} alt="Mavii logo" className="logo" />
+      <img src={logoUrl} alt="Mavii logo" className="logo" width="210" />
       <SearchBox placeholder="Search the web" />
       <TopSites />
     </div>
