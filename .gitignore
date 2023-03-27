@@ -3,3 +3,5 @@ dist
 web-ext-artifacts
 *.crx
 *.pem
+.parcel-cache
+packages

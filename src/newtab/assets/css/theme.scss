@@ -1,0 +1,107 @@
+:root {
+  // Spacing
+  --base-unit: 12px;
+  --spacing-xs: calc(var(--base-unit) * 0.25); /* 3px */
+  --spacing-sm: calc(var(--base-unit) * 0.5); /* 6px */
+  --spacing-md: calc(var(--base-unit) * 1); /* 12px */
+  --spacing-lg: calc(var(--base-unit) * 1.5); /* 18px */
+  --spacing-xl: calc(var(--base-unit) * 2); /* 24px */
+  --spacing-2xl: calc(var(--base-unit) * 2.5); /* 30px */
+  --spacing-3xl: calc(var(--base-unit) * 3); /* 36px */
+  --spacing-4xl: calc(var(--base-unit) * 3.5); /* 42px */
+  --spacing-5xl: calc(var(--base-unit) * 4); /* 48px */
+  --spacing-6xl: calc(var(--base-unit) * 5); /* 60px */
+  --spacing-7xl: calc(var(--base-unit) * 6); /* 72px */
+
+  // Layout Helpers
+  --layout-xs: calc(var(--base-unit) * 4); /* 48px */
+  --layout-sm: calc(var(--base-unit) * 8); /* 96px */
+  --layout-md: calc(var(--base-unit) * 12); /* 144px */
+  --layout-lg: calc(var(--base-unit) * 16); /* 192px */
+  --layout-xl: calc(var(--base-unit) * 20); /* 240px */
+  --layout-2xl: calc(var(--base-unit) * 24); /* 288px */
+  --layout-3xl: calc(var(--base-unit) * 28); /* 336px */
+  --layout-4xl: calc(var(--base-unit) * 32); /* 384px */
+
+  // Border Radius
+  --border-radius-xs: calc(var(--base-unit) * 0.25); /* 3px */
+  --border-radius-sm: calc(var(--base-unit) * 0.5); /* 6px */
+  --border-radius-md: calc(var(--base-unit) * 0.75); /* 9px */
+  --border-radius-lg: calc(var(--base-unit) * 1); /* 12px */
+  --border-radius-xl: calc(var(--base-unit) * 1.5); /* 18px */
+
+  // Border Width
+  --border-width-xs: 1px;
+  --border-width-sm: 2px;
+  --border-width-md: 4px;
+
+  // Font Sizes (follows Figma Spec0
+  --font-body-1: 18px;
+  --font-body-2: 16px;
+  --font-body-3: 13px;
+  --font-body-4: 12px;
+
+  --font-title-1: 28px;
+  --font-title-2: 24px;
+  --font-title-3: 20px;
+  --font-title-4: 18px;
+
+  --font-title-super: 48px;
+
+  // Font Family
+  --font-family-circular: "CircularXXWeb", ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  // Button Colors
+  --color-button-active: #003ea9;
+  --color-button-hover: rgba(0, 62, 169, 0.2);
+  --color-button-default: rgba(0, 62, 169, 0.08);
+  --color-button-inactive: #f2f4f5;
+  --color-button-inactive-selected: rgba(184, 185, 187, 0.5);
+  --color-button-seconary-default: #ffffff;
+
+  // Text Colors
+  --color-text-link: #003ea9;
+  --color-text-title: #1c1e29;
+  --color-text-content: #4d5156;
+  --color-text-shades-35: rgba(77, 81, 86, 0.35);
+  --color-text-shades-25: rgba(77, 81, 86, 0.25);
+  --color-text-white: #ffffff;
+
+  // Other Colors
+  --color-other-icon: #6f7a86;
+  --color-other-stroke: #e5e8eb;
+  --color-other-background: #f8f9fc;
+  --color-other-background-white: #ffffff;
+
+  // UI Container Variables
+  --container-main-max-width: 664px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Button Colors
+    --color-button-active: #9bbdff;
+    --color-button-hover: rgba(155, 189, 255, 0.2);
+    --color-button-default: rgba(155, 189, 255, 0.12);
+    --color-button-inactive: rgba(155, 189, 255, 0.04);
+    --color-button-inactive-selected: rgba(155, 189, 255, 0.08);
+    --color-button-seconary-default: #222326;
+
+    // Text Colors
+    --color-text-link: #9bbdff;
+    --color-text-title: #dfe4f0;
+    --color-text-content: #aaafbf;
+    --color-text-shades-35: rgba(155, 189, 255, 0.18);
+    --color-text-shades-25: rgba(155, 189, 255, 0.25);
+    --color-text-white: #222326;
+
+    // Other Colors
+    --color-other-icon: #686f78;
+    --color-other-stroke: #35383d;
+    --color-other-background: #2b2d31;
+    --color-other-background-white: #222326;
+  }
+}

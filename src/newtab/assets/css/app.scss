@@ -1,0 +1,39 @@
+@import "reset";
+@import "fonts";
+@import "theme";
+
+html {
+  background-color: var(--color-other-background);
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  color: var(--color-text-content);
+  font-family: "CircularXXWeb-Regular", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont;
+  font-size: var(--font-body-2);
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+
+  .content {
+    width: 680px;
+
+    .logo {
+      display: block;
+      margin: 0 auto 42px auto;
+    }
+  }
+}

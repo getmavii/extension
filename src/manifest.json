@@ -1,17 +1,27 @@
 {
   "name": "Mavii Search",
-  "version": "1.0",
-  "description": "Find the best stuff with Mavii.",
+  "version": "1.1",
+  "description": "Ask any question. Get a satisfying answer.",
   "manifest_version": 3,
+  "icons": {
+    "16": "./newtab/assets/images/favicons/favicon16.png",
+    "32": "./newtab/assets/images/favicons/favicon32.png",
+    "48": "./newtab/assets/images/favicons/favicon48.png",
+    "128": "./newtab/assets/images/favicons/favicon128.png"
+  },
   "chrome_settings_overrides": {
     "search_provider": {
-      "name": "pika",
-      "keyword": "pika",
+      "name": "Mavii Search",
+      "keyword": "mavii",
       "search_url": "https://mavii.com/search?q={searchTerms}",
       "favicon_url": "https://mavii.com/favicon.ico",
-      "suggest_url": "https://mavii.com/api/suggestions?q={searchTerms}&format=chrome",
+      "suggest_url": "https://mavii.com/api/suggestions?q={searchTerms}",
       "encoding": "UTF-8",
       "is_default": true
     }
-  }
+  },
+  "chrome_url_overrides": {
+    "newtab": "./newtab/index.html"
+  },
+  "permissions": ["topSites"]
 }

@@ -1,0 +1,84 @@
+.searchBoxContainer {
+  min-height: 60px;
+  margin: 0 auto 48px auto;
+  position: relative;
+
+  .searchBox {
+    border: var(--border-width-sm) solid var(--color-other-stroke);
+    border-radius: 8px;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+
+    &:hover,
+    &.isFocused {
+      outline: var(--border-width-sm) solid var(--color-other-stroke);
+    }
+
+    > .searchIcon {
+      left: 20px;
+      position: absolute;
+      top: 18px;
+    }
+
+    input {
+      background: var(--color-other-background-white);
+      border: 0;
+      color: inherit;
+      outline: none;
+      font-family: inherit;
+      font-size: 20px;
+      padding: 16px 16px 16px 58px;
+      width: 100%;
+
+      &::placeholder {
+        color: var(--color-other-icon);
+      }
+    }
+
+    button {
+      background: none;
+      border: 0;
+      opacity: 0;
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      svg {
+        fill: var(--color-other-icon);
+      }
+    }
+
+    .suggestions {
+      background: var(--color-other-background-white);
+      margin-top: -1px;
+      padding-bottom: 8px;
+      width: 100%;
+
+      li {
+        &.selected {
+          background: var(--color-other-background);
+        }
+
+        a {
+          color: inherit;
+          display: block;
+          padding: 12px 12px 12px 58px;
+          position: relative;
+          text-decoration: none;
+
+          &:hover {
+            background: var(--color-other-background);
+          }
+
+          .searchIcon {
+            left: 21px;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+}

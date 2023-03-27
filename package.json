@@ -1,10 +1,27 @@
 {
   "dependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "lodash-es": "^4.17.21",
+    "preact": "^10.12.1",
     "web-ext": "^7.3.1"
   },
   "scripts": {
-    "build": "mkdir -p dist && cp src/manifest.json dist/",
-    "start:firefox": "npm run build && web-ext run --source-dir='./dist'",
-    "start:chrome": "npm run build && web-ext run --source-dir='./dist' --target chromium"
+    "dev": "parcel watch src/manifest.json --host localhost",
+    "build": "parcel build src/manifest.json",
+    "clean": "rm -rf dist .parcel-cache",
+    "package": "./bin/package_chrome && ./bin/package_firefox",
+    "package:chrome": "./bin/package_firefox",
+    "package:firefox": "./bin/package_firefox"
+  },
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.8.3",
+    "buffer": "^5.7.1",
+    "parcel": "^2.8.3"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom/test-utils": "preact/test-utils",
+    "react-dom": "preact/compat",
+    "react/jsx-runtime": "preact/jsx-runtime"
   }
 }

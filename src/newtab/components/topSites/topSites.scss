@@ -1,0 +1,45 @@
+.topSitesList {
+  display: flex;
+  justify-content: flex-start;
+  gap: 21px;
+  height: 128px;
+
+  .topSitesItem {
+    color: var(--color-text-title);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      .favicon {
+        border-width: var(--border-width-sm);
+      }
+    }
+
+    .favicon {
+      border: var(--border-width-xs) solid var(--color-other-stroke);
+      background: var(--color-other-background-white);
+      border-radius: var(--border-radius-md);
+      height: 96px;
+      margin: 0 auto;
+      position: relative;
+      width: 96px;
+
+      img {
+        border-radius: var(--border-radius-xs);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .title {
+      font-size: 15px;
+      line-height: 145%;
+      margin-top: 8px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+}
