@@ -5,3 +5,4 @@ web-ext-artifacts
 *.pem
 .parcel-cache
 packages
+.DS_Store

@@ -36,7 +36,7 @@ class SearchBox extends React.Component {
     if (q.length) {
       const response = await (
         await fetch(
-          `https://mavii.com/api/suggestions?q=${encodeURIComponent(q)}`
+          `https://search.mavii.com/api/suggestions?q=${encodeURIComponent(q)}`
         )
       ).json();
 
@@ -180,7 +180,7 @@ class SearchBox extends React.Component {
       <div className="searchBoxContainer">
         <form
           className={this.getFormClasses()}
-          action="https://mavii.com/search"
+          action="https://search.mavii.com/search"
           method="get"
           onSubmit={this.clearSuggestions.bind(this)}
         >
